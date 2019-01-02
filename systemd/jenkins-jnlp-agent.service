@@ -8,7 +8,6 @@ After=var-cache-mock.mount var-lib-docker.mount var-lib-lago.mount
 After=var-lib-mock.mount var-lib-sharedslt.mount local-fs.target
 
 [Service]
-EnvironmentFile=/etc/ci-container.environment.defaults
 EnvironmentFile=/etc/ci-container.environment
 User=jenkins
 ExecStart=/usr/bin/java -jar "${JENKINS_AGENT_WORKDIR}/agent.jar" \
