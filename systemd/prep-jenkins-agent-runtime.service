@@ -7,7 +7,6 @@ After=export-environment.service home-jenkins.mount
 Type=oneshot
 EnvironmentFile=/etc/ci-container.environment
 ExecStart=/usr/sbin/useradd \
-    -G mock \
     -d ${JENKINS_AGENT_WORKDIR} \
     ${CI_RUNTIME_UNAME}
 ExecStartPost=/usr/bin/chmod +x /agent.jar
