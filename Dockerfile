@@ -19,6 +19,6 @@ RUN curl https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${agent
 RUN systemctl enable \
         home-jenkins.mount jenkins-jnlp-agent.service lock-on-slot.service \
         mk-shared-slot.service prep-jenkins-agent-runtime.service \
-        var-lib-docker.mount var-lib-sharedslt.mount
+        var-lib-docker.mount var-lib-sharedslt.mount docker.service
 
 WORKDIR /home/$username
