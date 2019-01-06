@@ -10,7 +10,6 @@ EnvironmentFile=/etc/ci-container.environment
 User=jenkins
 ExecStart=/usr/bin/java -jar "${JENKINS_AGENT_WORKDIR}/agent.jar" \
     -noReconnect \
-    -tunnel "${JENKINS_TUNNEL}" \
     -jnlpUrl "${JENKINS_URL}/computer/${JENKINS_AGENT_NAME}/slave-agent.jnlp" \
     -secret "${JENKINS_SECRET}" \
     -workDir "${JENKINS_AGENT_WORKDIR}"
