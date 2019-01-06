@@ -1,4 +1,4 @@
-FROM quay.io/pod_utils/systemd-libvirt:1.0.1
+FROM quay.io/pod_utils/systemd-libvirt:1.0.2
 
 ARG username="jenkins"
 ARG openjdk_version="1.8.0"
@@ -11,7 +11,8 @@ RUN \
         java-${openjdk_version}-openjdk-headless which
 COPY sbin/lock_on_slot.sh /usr/sbin/lock_on_slot
 RUN chmod +x /usr/sbin/lock_on_slot
-COPY sbin/agent_daemon.sh /agent_daemon
+COPY sbin/jnlp_launcher.sh /usr/sbin/jnlp_launcher
+RUN chmod +x /usr/sbin/jnlp_launcher
 COPY systemd/* /etc/systemd/system/
 COPY etc/* /etc/
 RUN curl https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${agent_jar_version}/remoting-${agent_jar_version}.jar \
