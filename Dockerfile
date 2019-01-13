@@ -7,7 +7,7 @@ ARG agent_jar_version="3.27"
 RUN \
     yum install -y git sed bash procps-ng createrepo python-paramiko \
         PyYAML python2-pyxdg python-jinja2 python-py python34-PyYAML \
-        docker firewalld daemonize sudo \
+        docker-1.13.1-75.git8633870.el7.centos firewalld daemonize sudo \
         java-${openjdk_version}-openjdk-headless which
 COPY sbin/lock_on_slot.sh /usr/sbin/lock_on_slot
 RUN chmod +x /usr/sbin/lock_on_slot
