@@ -2,8 +2,10 @@
 Description=Start JNLP service to connect as a slave
 Requires=mk-shared-slot.service export-environment.service lock-on-slot.service
 Requires=var-lib-docker.mount var-lib-sharedslt.mount local-fs.target
+Requires=libvirtd.service docker.service
 After=mk-shared-slot.service export-environment.service lock-on-slot.service
 After=var-lib-docker.mount var-lib-sharedslt.mount local-fs.target
+After=libvirtd.service docker.service
 
 [Service]
 EnvironmentFile=/etc/ci-container.environment
@@ -16,4 +18,6 @@ StartLimitInterval=3600
 StartLimitAction=poweroff-force
 
 [Install]
-WantedBy=multi-user.target
+RequiredBy=multi-user.target
+# If this unit failed to start, we want ti fail multi-user.target,
+# In order to let K8S now that this container should be terminated.
