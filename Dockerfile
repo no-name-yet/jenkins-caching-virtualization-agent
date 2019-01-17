@@ -4,10 +4,12 @@ ARG username="jenkins"
 ARG openjdk_version="1.8.0"
 ARG agent_jar_version="3.27"
 
+ADD https://download.docker.com/linux/centos/docker-ce.repo /etc/yum.repos.d/docker-ce.repo
+
 RUN \
     yum install -y git sed bash procps-ng createrepo python-paramiko \
         PyYAML python2-pyxdg python-jinja2 python-py python34-PyYAML \
-        docker firewalld daemonize sudo \
+        docker-ce firewalld daemonize sudo \
         java-${openjdk_version}-openjdk-headless which
 COPY sbin/lock_on_slot.sh /usr/sbin/lock_on_slot
 RUN chmod +x /usr/sbin/lock_on_slot
