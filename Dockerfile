@@ -1,4 +1,4 @@
-FROM quay.io/pod_utils/systemd-libvirt:1.0.2
+FROM quay.io/pod_utils/systemd-libvirt:1.0.3
 
 ARG username="jenkins"
 ARG openjdk_version="1.8.0"
